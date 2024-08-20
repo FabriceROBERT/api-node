@@ -7,7 +7,12 @@ export default function HomePage() {
   const [data, setData] = React.useState([]);
 
   const callAPI = async () => {
-    const response = await axios.get("http://localhost:3000/duncanworld");
+    const response = await axios.get("http://localhost:3000/duncanworld", {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    });
+
     console.log(response.data);
     setData(response.data);
     return "ok";
